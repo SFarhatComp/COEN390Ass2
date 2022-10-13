@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="600dp"
+    android:layout_gravity="center_vertical">
+
+    <Button
+        android:id="@+id/SaveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="250dp"
+        android:layout_marginTop="500dp"
+        android:text="@string/save" />
+
+    <EditText
+        android:id="@+id/SurnameInput"
+        android:layout_width="match_parent"
+        android:layout_height="79dp"
+        android:layout_marginTop="50dp"
+        android:ems="10"
+        android:gravity="center_vertical"
+        android:hint="@string/student_surname"
+        android:inputType="textPersonName"
+        android:importantForAutofill="no" />
+
+    <EditText
+        android:id="@+id/NameInput"
+        android:layout_width="match_parent"
+        android:layout_height="62dp"
+        android:layout_marginTop="150dp"
+        android:ems="10"
+        android:hint="@string/student_name"
+        android:inputType="textPersonName"
+        android:importantForAutofill="no" />
+
+    <EditText
+        android:id="@+id/IdInput"
+        android:layout_width="match_parent"
+        android:layout_height="62dp"
+        android:layout_marginTop="250dp"
+        android:ems="10"
+        android:hint="@string/student_id"
+        android:inputType="textPersonName"
+        android:importantForAutofill="no" />
+
+    <EditText
+        android:id="@+id/GpaInput"
+        android:layout_width="match_parent"
+        android:layout_height="73dp"
+        android:layout_marginTop="350dp"
+        android:ems="10"
+        android:hint="@string/student_gpa"
+        android:inputType="textPersonName"
+        android:importantForAutofill="no" />
+
+    <Button
+        android:id="@+id/CancelButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="500dp"
+        android:text="@string/cancel"
+        app:strokeColor="#C31818" />
+
+</FrameLayout>

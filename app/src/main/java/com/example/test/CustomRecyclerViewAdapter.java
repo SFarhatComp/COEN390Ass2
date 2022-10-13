@@ -53,7 +53,7 @@ public class CustomRecyclerViewAdapter extends RecyclerView.Adapter<CustomRecycl
     public void onBindViewHolder(@NonNull CustomRecyclerViewAdapter.ViewHolder holder, int position) {
 
         // Setting the text on text viewer
-        holder.getTextViewSurname().setText((position + ". " + listOfProfiles.get(position).ProfileSurname)+", "+listOfProfiles.get(position).ProfileName);
+        holder.getTextViewSurname().setText(((position+1) + ". " + listOfProfiles.get(position).ProfileSurname)+", "+listOfProfiles.get(position).ProfileName);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

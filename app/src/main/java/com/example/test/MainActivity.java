@@ -37,14 +37,7 @@ public class MainActivity extends AppCompatActivity {
         ListViewer_ = findViewById(R.id.ScrollerList);
         db = DataBaseHelper.CreateDatabase(getApplicationContext());
 
-
-
-         for (int i=0;i<10;i++) {
-   db.profileDao().InsertProfile(new Profile(0, "Amine" + i, "Bouras" + i, 3.0));
-        };
-
-
-
+        DisplayViewer.setText("0 Profiles, by Surname");
          SetupView();
 
 
@@ -66,10 +59,14 @@ public class MainActivity extends AppCompatActivity {
         FragmentOption.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast toast=Toast. makeText(getApplicationContext(),"Hello Javatpoint, the other button is working",Toast. LENGTH_SHORT);
-                toast.show();
+                FragmentProfile object= new FragmentProfile();
+                object.show(getSupportFragmentManager(),"ProfileFragmentDialog");
             }
         });
+
+
+
+
 
     }
 
@@ -86,4 +83,6 @@ public class MainActivity extends AppCompatActivity {
         ListViewer_.setAdapter(customRecyclerViewAdapter);
 
     };
+
+    protected void ResetCount(){DisplayViewer.setText(ListofProfiles.size()+" Profiles, by" + " Surname");};
 }

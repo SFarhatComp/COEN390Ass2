@@ -16,10 +16,20 @@ public class Access {
     public int ProfileIdNumber;
     @ColumnInfo(name = "AccessType")
     public String AccessType;
+    @ColumnInfo
+    public String Time;
 
-    public Access(int AccessId, int ProfileIdNumber, String AccessType) {
+    public Access(int AccessId, int ProfileIdNumber, String AccessType, String Time) {
         this.AccessId = AccessId;
         this.ProfileIdNumber = ProfileIdNumber;
         this.AccessType = AccessType;
+        this.Time=Time;
     }
+
+
+
+
+
 }
+
+
