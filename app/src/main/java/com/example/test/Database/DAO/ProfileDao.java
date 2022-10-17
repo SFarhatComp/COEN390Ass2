@@ -25,6 +25,9 @@ public interface ProfileDao {
     @Query("SELECT * FROM profiletable ORDER BY ProfileSurname  ASC ")
     List<Profile> GetAllElementsAlpha();
 
+    @Query("SELECT * FROM profiletable ORDER BY ProfileId ASC ")
+    List<Profile> GetALlElementsWithIDSorted();
+
     // Set Function for a profile object
     @Insert
     void InsertProfile(Profile... profiles);

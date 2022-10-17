@@ -6,8 +6,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     protected DataBaseHelper db;
     protected String TypeOfView = "Surname";
     List<Profile> ListofProfiles;
+    List<Profile> ListofProfiles2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +47,59 @@ public class MainActivity extends AppCompatActivity {
         DisplayButton_.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast toast=Toast. makeText(getApplicationContext(),"Hello Javatpoint",Toast. LENGTH_SHORT);
-                toast.show();
+
+
+                PopupMenu popupMenu = new PopupMenu(MainActivity.this, view);
+                popupMenu.getMenuInflater().inflate(R.menu.dotted_menu,popupMenu.getMenu());
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+
+                        switch (menuItem.getItemId()){
+
+                            case R.id.Name_Mode:
+
+
+                                Toast toast=Toast. makeText(getApplicationContext(),"The Display has been changed to Name Mode",Toast. LENGTH_SHORT);
+                                toast.show();
+
+                                TypeOfView="Surname";
+                                DisplayViewer.setText(ListofProfiles.size() +" Profiles, by " + TypeOfView);
+                                SetupView(0);
+                                return true;
+
+                            case R.id.Id_Mode:
+
+
+                                Toast toast2=Toast. makeText(getApplicationContext(),"The Display has been changed to ID Mode ",Toast. LENGTH_SHORT);
+                                toast2.show();
+
+                                SetupView(1);
+                                TypeOfView="Id";
+                                DisplayViewer.setText(ListofProfiles.size() +" Profiles, by " + TypeOfView);
+
+                                return true;
+
+
+
+
+                            default :
+                                return false;
+
+
+                        }
+
+
+
+                    }
+                });
+
+                popupMenu.show();
+
+
+
+
+
 
             }
         });
@@ -67,19 +121,27 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        SetupView();
+        SetupView(0);
     }
 
-    protected void SetupView(){
+    protected void SetupView(int a){
 
         ListofProfiles = db.profileDao().GetAllElementsAlpha();
+        ListofProfiles2= db.profileDao().GetALlElementsWithIDSorted();
         DisplayViewer.setText(ListofProfiles.size() +" Profiles, by " + TypeOfView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        customRecyclerViewAdapter = new CustomRecyclerViewAdapter(ListofProfiles);
+        if (a==0){
+        customRecyclerViewAdapter = new CustomRecyclerViewAdapter(ListofProfiles,a);}
+        else{
+            customRecyclerViewAdapter = new CustomRecyclerViewAdapter(ListofProfiles2,a);
+        }
         ListViewer_.setLayoutManager(linearLayoutManager);
         ListViewer_.setAdapter(customRecyclerViewAdapter);
 
     };
+
+
+
 
     protected void ResetCount(){DisplayViewer.setText(ListofProfiles.size()+" Profiles, by" + " Surname");};
 }

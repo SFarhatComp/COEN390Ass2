@@ -18,6 +18,7 @@ public class CustomRecyclerViewAdapter extends RecyclerView.Adapter<CustomRecycl
 
 
     private List<Profile> listOfProfiles;
+    private int flag;
     // This class hold the element inside the Layout, of every item created in this recycler view
     public static class ViewHolder extends RecyclerView.ViewHolder{
 
@@ -33,8 +34,9 @@ public class CustomRecyclerViewAdapter extends RecyclerView.Adapter<CustomRecycl
 
 
     }
-    public CustomRecyclerViewAdapter(List<Profile> listOfProfiles) {
+    public CustomRecyclerViewAdapter(List<Profile> listOfProfiles,int flag) {
         this.listOfProfiles = listOfProfiles;
+        this.flag=flag;
     }
 
 
@@ -53,7 +55,14 @@ public class CustomRecyclerViewAdapter extends RecyclerView.Adapter<CustomRecycl
     public void onBindViewHolder(@NonNull CustomRecyclerViewAdapter.ViewHolder holder, int position) {
 
         // Setting the text on text viewer
-        holder.getTextViewSurname().setText(((position+1) + ". " + listOfProfiles.get(position).ProfileSurname)+", "+listOfProfiles.get(position).ProfileName);
+
+        if(flag==0){
+        holder.getTextViewSurname().setText(((position+1) + ". " + listOfProfiles.get(position).ProfileSurname)+", "+listOfProfiles.get(position).ProfileName);}
+
+        else{
+
+            holder.getTextViewSurname().setText(((position+1) + ". " + listOfProfiles.get(position).ProfileId));
+        }
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -18,11 +18,14 @@ public class Profile {
     public String ProfileSurname;
     @ColumnInfo(name="ProfileGPA")
     public double ProfileGPA;
+    @ColumnInfo(name="Creation_Date")
+    public String Date;
 
-    public Profile (int ProfileId, String ProfileSurname,String ProfileName,  double ProfileGPA) {
+    public Profile (int ProfileId, String ProfileSurname,String ProfileName,  double ProfileGPA,String Date) {
         this.ProfileId = ProfileId;
         this.ProfileName = ProfileName;
         this.ProfileSurname = ProfileSurname;
         this.ProfileGPA = ProfileGPA;
+        this.Date=Date;
     }
 }

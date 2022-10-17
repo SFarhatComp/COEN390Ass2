@@ -99,6 +99,8 @@ public class ProfileInformationActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             db.profileDao().delete(profile);
+            db.accessDAO().InsertAccess(new Access(0,profile.ProfileId,"Closed",new SimpleDateFormat("yyyy.MM.dd @ hh:mm:ss").format(new Timestamp(System.currentTimeMillis()))));
+            db.accessDAO().InsertAccess(new Access(0,profile.ProfileId,"Deleted",new SimpleDateFormat("yyyy.MM.dd @ hh:mm:ss").format(new Timestamp(System.currentTimeMillis()))));
             finish();
         }
     });

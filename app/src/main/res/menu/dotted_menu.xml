@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:title="Profile Name Mode"
+        android:id="@+id/Name_Mode" />
+    <item
+        android:title="Profile ID Mode"
+        android:id="@+id/Id_Mode" />
+</menu>

@@ -62,13 +62,13 @@ public class FragmentProfile extends DialogFragment {
 
 
                     DataBaseHelper db= DataBaseHelper.CreateDatabase(getContext());
-                    db.profileDao().InsertProfile(new Profile(Ids, Surnames_,Names,GPAs));
+                    db.profileDao().InsertProfile(new Profile(Ids, Surnames_,Names,GPAs,new SimpleDateFormat("yyyy.MM.dd @ hh:mm:ss").format(new Timestamp(System.currentTimeMillis()))));
                     db.accessDAO().InsertAccess(new Access(0,Ids,"Created",new SimpleDateFormat("yyyy.MM.dd @ hh:mm:ss").format(new Timestamp(System.currentTimeMillis()))));
                     Toast.makeText(view.getContext(), "The profile has been inserted",Toast.LENGTH_LONG).show();
 
 
 
-                    ((MainActivity)getActivity()).SetupView();
+                    ((MainActivity)getActivity()).SetupView(0);
                     ((MainActivity)getActivity()).ResetCount();
                     dismiss();
                 }
