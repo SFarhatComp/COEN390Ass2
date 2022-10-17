@@ -82,7 +82,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
         android:layout_marginBottom="2dp"
-        android:text="TextView"
+        android:text="ACCESS INFORMATION"
         app:layout_constraintBottom_toTopOf="@+id/_dynamic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -100,7 +100,21 @@
         app:layout_constraintTop_toTopOf="@+id/toolbar"
         app:srcCompat="?attr/actionModeCloseDrawable" />
 
+    <ImageButton
+        android:id="@+id/DeleteButton"
+        android:layout_width="67dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="232dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.058"
+        app:layout_constraintStart_toEndOf="@+id/BackButton"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_delete" />
+
     <ListView
+        android:id="@+id/ScrollerList2"
         android:layout_width="409dp"
         android:layout_height="491dp"
         android:layout_marginStart="1dp"

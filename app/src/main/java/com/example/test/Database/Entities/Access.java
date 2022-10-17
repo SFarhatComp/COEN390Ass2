@@ -16,7 +16,7 @@ public class Access {
     public int ProfileIdNumber;
     @ColumnInfo(name = "AccessType")
     public String AccessType;
-    @ColumnInfo
+    @ColumnInfo(name="TimeStamp")
     public String Time;
 
     public Access(int AccessId, int ProfileIdNumber, String AccessType, String Time) {

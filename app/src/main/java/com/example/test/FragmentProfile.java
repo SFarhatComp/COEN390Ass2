@@ -61,7 +61,6 @@ public class FragmentProfile extends DialogFragment {
                     GPAs=Double.valueOf(ProfileGPAs);
 
 
-
                     DataBaseHelper db= DataBaseHelper.CreateDatabase(getContext());
                     db.profileDao().InsertProfile(new Profile(Ids, Surnames_,Names,GPAs));
                     db.accessDAO().InsertAccess(new Access(0,Ids,"Created",new SimpleDateFormat("yyyy.MM.dd @ hh:mm:ss").format(new Timestamp(System.currentTimeMillis()))));

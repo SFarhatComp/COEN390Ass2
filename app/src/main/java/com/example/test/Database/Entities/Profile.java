@@ -19,7 +19,7 @@ public class Profile {
     @ColumnInfo(name="ProfileGPA")
     public double ProfileGPA;
 
-    public Profile (int ProfileId, String ProfileName, String ProfileSurname, double ProfileGPA) {
+    public Profile (int ProfileId, String ProfileSurname,String ProfileName,  double ProfileGPA) {
         this.ProfileId = ProfileId;
         this.ProfileName = ProfileName;
         this.ProfileSurname = ProfileSurname;
