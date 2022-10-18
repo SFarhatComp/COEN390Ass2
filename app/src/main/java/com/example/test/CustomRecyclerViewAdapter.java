@@ -57,11 +57,11 @@ public class CustomRecyclerViewAdapter extends RecyclerView.Adapter<CustomRecycl
         // Setting the text on text viewer
 
         if(flag==0){
-        holder.getTextViewSurname().setText(((position+1) + ". " + listOfProfiles.get(position).ProfileSurname)+", "+listOfProfiles.get(position).ProfileName);}
+        holder.getTextViewSurname().setText(("  "+(position+1) + " . " + listOfProfiles.get(position).ProfileSurname)+", "+listOfProfiles.get(position).ProfileName);}
 
         else{
 
-            holder.getTextViewSurname().setText(((position+1) + ". " + listOfProfiles.get(position).ProfileId));
+            holder.getTextViewSurname().setText("  "+((position+1) + " . " + listOfProfiles.get(position).ProfileId));
         }
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

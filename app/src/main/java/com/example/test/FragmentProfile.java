@@ -27,6 +27,8 @@ public class FragmentProfile extends DialogFragment {
     protected Button SaveButton_,CancelButton_;
     protected int Ids;
     protected double GPAs;
+
+    //
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -50,17 +52,21 @@ public class FragmentProfile extends DialogFragment {
         SaveButton_.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                // save button will apply the text function to the variables we have allocatedin order ot use them in  the dabatase
                 String Surnames_= ProfileSurname_.getText().toString();
                 String Names = ProfileName_.getText().toString();
                 String ProfileIds = ProfileId_.getText().toString();
                 String ProfileGPAs = Profile_GPA.getText().toString();
 
-                if(!ProfileIds.isEmpty() && !ProfileGPAs.isEmpty() && !Surnames_.isEmpty() && !Names.isEmpty()){
 
+                if(!ProfileIds.isEmpty() && !ProfileGPAs.isEmpty() && !Surnames_.isEmpty() && !Names.isEmpty()&& ProfileIds.length()==8){
+                // value checking to make sure the parse methode would worl
                     Ids= Integer.parseInt(ProfileIds);
                     GPAs=Double.valueOf(ProfileGPAs);
 
 
+                    // accessing the databases using the dao
                     DataBaseHelper db= DataBaseHelper.CreateDatabase(getContext());
                     db.profileDao().InsertProfile(new Profile(Ids, Surnames_,Names,GPAs,new SimpleDateFormat("yyyy.MM.dd @ hh:mm:ss").format(new Timestamp(System.currentTimeMillis()))));
                     db.accessDAO().InsertAccess(new Access(0,Ids,"Created",new SimpleDateFormat("yyyy.MM.dd @ hh:mm:ss").format(new Timestamp(System.currentTimeMillis()))));
@@ -75,6 +81,7 @@ public class FragmentProfile extends DialogFragment {
 
                 else {
 
+                    // Verification TOast
                     Toast.makeText(view.getContext(), "Some Input are invalid, Please Verify",Toast.LENGTH_LONG).show();
                     return;
 

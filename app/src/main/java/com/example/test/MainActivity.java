@@ -21,7 +21,6 @@ import java.util.List;
 import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
-
     protected FloatingActionButton FragmentOption;
     protected ImageButton DisplayButton_;
     protected TextView DisplayViewer;
@@ -42,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         ListViewer_ = findViewById(R.id.ScrollerList);
         db = DataBaseHelper.CreateDatabase(getApplicationContext());
 
-
+        // Inflater of the Display button that allows for the changing of displays
 
         DisplayButton_.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,21 +55,22 @@ public class MainActivity extends AppCompatActivity {
                     public boolean onMenuItemClick(MenuItem menuItem) {
 
                         switch (menuItem.getItemId()){
-
+                            
+                            // case where the Name button is pressed, when thats the case we have to set the custom Recycler Adapter to display what we need it to display
                             case R.id.Name_Mode:
 
 
                                 Toast toast=Toast. makeText(getApplicationContext(),"The Display has been changed to Name Mode",Toast. LENGTH_SHORT);
-                                toast.show();
+                                toast.show(); // Validation toast
 
                                 TypeOfView="Surname";
                                 DisplayViewer.setText(ListofProfiles.size() +" Profiles, by " + TypeOfView);
-                                SetupView(0);
+                                SetupView(0); // call to the set up view function that allows the program to know whcih vieu, the integer passed is a flag
                                 return true;
 
                             case R.id.Id_Mode:
 
-
+                                // same principle as previous case, but to display the ID mode
                                 Toast toast2=Toast. makeText(getApplicationContext(),"The Display has been changed to ID Mode ",Toast. LENGTH_SHORT);
                                 toast2.show();
 
@@ -110,6 +110,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 FragmentProfile object= new FragmentProfile();
                 object.show(getSupportFragmentManager(),"ProfileFragmentDialog");
+                
+                
+                // On click listener for the Profile Fragment Dialog
             }
         });
 
@@ -121,11 +124,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        SetupView(0);
+        SetupView(0); // Refresher of the view
     }
 
     protected void SetupView(int a){
-
+        // View set up for the recycler, Two different list of profiles were created which allows for two different views deisplayed depending on the flag passed by the integer var;
         ListofProfiles = db.profileDao().GetAllElementsAlpha();
         ListofProfiles2= db.profileDao().GetALlElementsWithIDSorted();
         DisplayViewer.setText(ListofProfiles.size() +" Profiles, by " + TypeOfView);
